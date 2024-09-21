@@ -3,7 +3,7 @@
 
 #define CE_PIN 22
 #define CSN_PIN 23
-#define RF24_ADDRESS "IES04"
+#define RF24_ADDRESS "TRC24"
 
 ControllerStateReceiver controller(CE_PIN, CSN_PIN, RF24_ADDRESS);
 Scheduler runner;
