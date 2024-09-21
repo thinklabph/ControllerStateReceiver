@@ -1,4 +1,4 @@
-# WirelessController
+# ControllerStateReceiver
 
 ## How to add library to Arduino
 
