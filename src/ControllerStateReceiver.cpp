@@ -23,7 +23,7 @@ void ControllerStateReceiver::init() {
     }
 
     _radio.setPALevel(RF24_PA_LOW);
-    _radio.setPayloadSize(sizeof(_controllerState));;
+    _radio.setPayloadSize(sizeof(_controllerState));
 
     _radio.openWritingPipe(_address);
     _radio.openReadingPipe(1, _address);
@@ -38,9 +38,10 @@ bool ControllerStateReceiver::update() {
 
   uint8_t pipe;
   if (_radio.available(&pipe)) {              // is there a payload? get the pipe number that recieved it
-    _radio.read(newControllerState, sizeof(newControllerState));   // fetch payload from FIFO
+    _radio.read(&newControllerState, sizeof(newControllerState));   // fetch payload from FIFO
 
     if (newControllerState != _controllerState) {
+      
       updateButtonState(newControllerState);
 
       return true;  // Return true when there is state change on the controller buttons
@@ -84,22 +85,22 @@ void ControllerStateReceiver::updateButtonState(uint64_t controllerState) {
     uint16_t buttonWord = controllerState & 0xFFFF;
 
     // Active low logic (0 = pressed, 1 = released)
-    _select   = !(buttonWord & 0x0001);
-    _l3       = !(buttonWord & 0x0002);
-    _r3       = !(buttonWord & 0x0004);
-    _start    = !(buttonWord & 0x0008);
-    _up       = !(buttonWord & 0x0010);
-    _right    = !(buttonWord & 0x0020);
-    _down     = !(buttonWord & 0x0040);
-    _left     = !(buttonWord & 0x0080);
-    _l2       = !(buttonWord & 0x0100);
-    _r2       = !(buttonWord & 0x0200);
-    _l1       = !(buttonWord & 0x0400);
-    _r1       = !(buttonWord & 0x0800);
-    _triangle = !(buttonWord & 0x1000);
-    _circle   = !(buttonWord & 0x2000);
-    _cross    = !(buttonWord & 0x4000);
-    _square   = !(buttonWord & 0x8000);
+    _select   = (buttonWord & 0x0001);
+    _l3       = (buttonWord & 0x0002);
+    _r3       = (buttonWord & 0x0004);
+    _start    = (buttonWord & 0x0008);
+    _up       = (buttonWord & 0x0010);
+    _right    = (buttonWord & 0x0020);
+    _down     = (buttonWord & 0x0040);
+    _left     = (buttonWord & 0x0080);
+    _l2       = (buttonWord & 0x0100);
+    _r2       = (buttonWord & 0x0200);
+    _l1       = (buttonWord & 0x0400);
+    _r1       = (buttonWord & 0x0800);
+    _triangle = (buttonWord & 0x1000);
+    _circle   = (buttonWord & 0x2000);
+    _cross    = (buttonWord & 0x4000);
+    _square   = (buttonWord & 0x8000);
 }
 
 
