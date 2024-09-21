@@ -10,7 +10,7 @@
 ## Using the example
 
 1. In the Arduino IDE, click on **Examples** > **ControllerStateReceiver** > **BasicControllerStateReceiver**.
-2. Modify the `R24_ADDRESS` to a 5 character string of your choice. This is used to know which transceiver will your controller pair with. This should be the same to your [ControllerStateTransmitter](https://github.com/thinklabph/ControllerStateTransmitter) `R24_ADDRESS` value. 
+2. Modify the `R24_ADDRESS` to a custom 5-character string of your choice. This string is used to identify and pair the controller with the corresponding transceiver in your mobot. Ensure that the string is identical on both the [controller](https://github.com/thinklabph/ControllerStateTransmitter) and [mobot](https://github.com/thinklabph/ControllerStateReceiver) for successful pairing.
 3. Set the Board by clicking on **Tools** > **Board** > **Arduino AVR Boards** > **Arduino Mega or Mega 2560**.
 4. Set the Port to the microcontroller of the mobot.
 5. Upload.
