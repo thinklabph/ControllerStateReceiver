@@ -10,10 +10,10 @@ Scheduler runner;
 
 void loopTask() {
   // Checks and updates the controller states
-  bool controllerStateChange = controller.update();
+  bool isDataReceived = controller.update();
 
-  if (controllerStateChange) {
-    // Check the buttons when there is a change in the state of the controller buttons and analog sticks
+  if (isDataReceived) {
+    // Check the buttons when there is data received
 
     // Example: Print the state of all buttons
     if (controller.triangle()) { Serial.println("Triangle pressed"); }
