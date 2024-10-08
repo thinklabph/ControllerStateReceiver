@@ -43,13 +43,9 @@ bool ControllerStateReceiver::update() {
     if (newControllerState != _controllerState) {
       
       updateButtonState(newControllerState);
-
-      return true;  // Return true when there is state change on the controller buttons
     }
-    else {
-      // Return false when there is no state change on the controller buttons
-      return false;
-    }
+    // Return true when there is message received
+    return true;
   }
   else {
     // Return false when there is no message received
